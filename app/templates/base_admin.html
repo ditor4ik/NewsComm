@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Административная панель NewsComm</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css')}}">
+    {% block style %}{% endblock %}
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{{url_for('admin.index')}}">Администрация NewsComm</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="d-flex justify-content-around bd-highlight">
+      <div class="bd-highlight me-4 fs-4" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTable" aria-controls="offcanvasTable">Таблицы</div>
+      <div class="bd-highlight me-4 fs-4" data-bs-toggle="offcanvas" data-bs-target="#offcanvasStatistic" aria-controls="offcanvasStatistic">Статистики</div>
+    </div>
+    <div class="d-flex justify-content-end bd-highlight">
+      <div class="bd-highlight me-4">Добро пожаловать, {{session['fullname']}}</div>
+      <div class="bd-highlight me-4">
+          <a class="text-dark text-decoration-none" aria-current="page" href="{{url_for('admin.logout')}}">Выйти</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="offcanvas offcanvas-start w-75" tabindex="-1" id="offcanvasTable" aria-labelledby="offcanvasTableLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasTableLabel">Таблицы</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Закрыть"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Роли</h5>
+            <a href="{{url_for('admin.table_role')}}" class="btn btn-primary">Перейти</a>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Служебные аккаунты</h5>
+            <a href="#" class="btn btn-primary">Перейти</a>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Аккаунты</h5>
+            <a href="#" class="btn btn-primary">Перейти</a>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Новости</h5>
+            <a href="#" class="btn btn-primary">Перейти</a>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Категории</h5>
+            <a href="#" class="btn btn-primary">Перейти</a>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Комметарии</h5>
+            <a href="#" class="btn btn-primary">Перейти</a>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Мнение</h5>
+            <a href="#" class="btn btn-primary">Перейти</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="offcanvas offcanvas-start w-75" tabindex="-1" id="offcanvasStatistic" aria-labelledby="offcanvasStatisticLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasStatisticLabel">Статистики</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Закрыть"></button>
+  </div>
+  <div class="offcanvas-body">
+
+  </div>
+</div>
+
+<div class="mx-5">
+    {% block body %}{% endblock %}
+</div>
+<script src="{{ url_for('static', filename='bootstrap/js/bootstrap.min.js')}}"></script>
+{% block script %}{% endblock %}
+</body>
+</html>
